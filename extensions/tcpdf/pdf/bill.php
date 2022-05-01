@@ -38,7 +38,7 @@ $valueCustomer = $answerSale["idCustomer"];
 
 $answerCustomer = ControllerCustomers::ctrShowCustomers($itemCustomer, $valueCustomer);
 
-//TRAEMOS LA INFORMACIÓN DEL Seller
+//WE BRING THE INFORMATION OF THE SELLER
 
 $itemSeller = "id";
 $valueSeller = $answerSale["idSeller"];
@@ -273,7 +273,7 @@ $block5 = <<<EOF
 			</td>
 			
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
-			<img style="width:8px;" src="images/naira.png">$totalPrice
+			<img style="width:8px;" src="images/naira.png">$netPrice
 			</td>
 
 		</tr>
