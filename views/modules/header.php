@@ -1,21 +1,22 @@
 <header class="main-header">
-	
 	<!--==========================
 	=            logo            =
 	===========================-->
-	<a href="" class="logo">
+	<a href="home" class="logo">
 		
 		<!-- mini logo -->
+
 		<span class="logo-mini">
 
-			<img  class="img-responsive" src="views/img/template/icon-white.png" style="padding:10px">
+			<img class="img-responsive" src="views/img/template/icon-white.png" style="padding: 10px" >
 
 		</span>
 
-		<!-- normal logo -->
+		<!-- logo -->
+
 		<span class="logo-lg">
 
-			<img class="img-responsive" src="views/img/template/logo-white-linear.png" style="padding: 10px 0">
+			<img class="img-responsive" src="views/img/template/logo-white-linear.png" style="padding: 10px 0" >
 
 		</span>
 
@@ -28,10 +29,11 @@
 	<nav class="navbar navbar-static-top" role="navigation">
 		
 		<!-- Navigation button -->
+
 		<a class="sidebar-toggle" data-toggle="push-menu" role="button" href="#">
-			
+
 			<span class="sr-only">Toggle Navigation</span>
-		
+
 		</a>
 
 		<!-- User Profile -->
@@ -43,10 +45,21 @@
 				<li class="dropdown user user-menu">
 
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+						<?php 
+
+							if ($_SESSION["photo"] != "") {
+								
+								echo '<img src="'.$_SESSION["photo"].'"class="user-image">';
+							
+							}else{
+
+								echo '<img class="user-image" src="views/img/users/default/anonymous.png">';
+							}
+
+						?>
 						
-						<img class="user-image" src="views/img/users/default/anonymous.png">
-											
-						<span class="hidden-xs">User Administrator</span>
+						<span class="hidden-xs"><?php echo $_SESSION["name"]; ?></span>
 
 					</a>
 
@@ -58,7 +71,7 @@
 
 							<div class="pull-right">
 
-								<a class="btn-default btn-flat" href="logout">Logout</a>
+								<a class="btn btn-default btn-flat" href="logout">Logout</a>
 
 							</div>
 

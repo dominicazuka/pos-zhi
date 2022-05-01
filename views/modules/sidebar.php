@@ -1,70 +1,96 @@
 <aside class="main-sidebar">
 
 	<section class="sidebar">
-		
+
 		<ul class="sidebar-menu">
 
-			<li class="active">
+			<?php
 
-				<a href="home">
+			if ($_SESSION["profile"] == "Administrator") {
 
-					<i class="fa fa-home"></i>
+				echo '
 
-					<span>Home</span>
+					<li class="active">
 
-				</a>
+						<a href="home">
 
-			</li>
+							<i class="fa fa-home"></i>
 
-			<li>
+							<span>Home</span>
 
-				<a href="users">
+						</a>
 
-					<i class="fa fa-user"></i>
+					</li>
 
-					<span>User management</span>
+					<li>
 
-				</a>
+						<a href="users">
 
-			</li>
+							<i class="fa fa-user"></i>
 
-			<li>
+							<span>User management</span>
 
-				<a href="categories">
+						</a>
 
-					<i class="fa fa-th"></i>
+					</li>
 
-					<span>Categories</span>
+				';
+			}
 
-				</a>
+			if ($_SESSION["profile"] == "Administrator" || $_SESSION["profile"] == "Account-Officer") {
 
-			</li>
+				echo '
 
-			<li>
+					<li>
 
-				<a href="products">
+						<a href="categories">
 
-					<i class="fa fa-product-hunt"></i>
+							<i class="fa fa-th"></i>
 
-					<span>Products</span>
+							<span>Categories</span>
 
-				</a>
+						</a>
 
-			</li>
+					</li>
 
-			<li>
+					<li>
 
-				<a href="customers">
+						<a href="products">
 
-					<i class="fa fa-user"></i>
+							<i class="fa fa-product-hunt"></i>
 
-					<span>Customers</span>
+							<span>Products</span>
 
-				</a>
+						</a>
 
-			</li>
+					</li>
+				';
+			}
 
-			<li class="treeview">
+			if ($_SESSION["profile"] == "Administrator" || $_SESSION["profile"] == "Bar-Manager") {
+				echo '
+					
+					<li>
+
+						<a href="customers">
+
+							<i class="fa fa-user"></i>
+
+							<span>Customers</span>
+
+						</a>
+
+					</li>
+
+				';
+			}
+
+			if ($_SESSION["profile"] == "Administrator" || $_SESSION["profile"] == "Bar-Manager") {
+
+				echo '
+
+
+				<li class="treeview">
 
 				<a href="#">
 
@@ -84,7 +110,7 @@
 
 					<li>
 
-						<a href="manage-sales">
+						<a href="sales">
 
 							<i class="fa fa-circle"></i>
 
@@ -96,7 +122,7 @@
 
 					<li>
 
-						<a href="create-sales">
+						<a href="create-sale">
 
 							<i class="fa fa-circle"></i>
 
@@ -104,11 +130,14 @@
 
 						</a>
 
-					</li>
+					</li>';
+			}
 
-					<li>
+			if ($_SESSION["profile"] == "Administrator") {
 
-						<a href="sales-report">
+				echo '<li>
+
+						<a href="reports">
 
 							<i class="fa fa-circle"></i>
 
@@ -116,14 +145,17 @@
 
 						</a>
 
-					</li>
+					</li>';
+			}
 
-				</ul>
+			echo '</ul>
 
-			</li>
-			
+			</li>';
+
+			?>
+
 		</ul>
 
 	</section>
-	
+
 </aside>

@@ -1,63 +1,180 @@
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Categories management
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="home"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
 
-  <section class="content-header">
+    <!-- Main content -->
+    <section class="content">
 
-    <h1>
-
-      Categories
-
-    </h1>
-
-    <ol class="breadcrumb">
-
-      <li><a href="home"><i class="fa fa-dashboard"></i> Home</a></li>
-
-      <li class="active">Dashboard</li>
-
-    </ol>
-
-  </section>
-
-  <section class="content">
-
-    <div class="box">
-
-      <div class="box-header with-border">
-
-        <h3 class="box-title">Title</h3>
-
-        <div class="box-tools pull-right">
-
-          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-
-            <i class="fa fa-minus"></i>
-
-          </button>
-
-          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-            
-            <i class="fa fa-times"></i>
-
-          </button>
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <button class="btn btn-warning" data-toggle="modal" data-target="#addCategories">Add Categories</button>
 
         </div>
+        <div class="box-body">
+          <table class="table table-bordered table-striped dt-responsive tables" width="100%">
+         
+            <thead>
+             
+             <tr>
+               
+               <th style="width:10px">#</th>
+               <th>Category</th>
+               <th>Actions</th>
 
-      </div>
+             </tr> 
 
-      <div class="box-body">
+            </thead>
 
-        Start creating your amazing application!
+            <tbody>
+              <?php
+
+                $item = null; 
+                $value = null;
+
+                $categories = ControllerCategories::ctrShowCategories($item, $value);
+
+                // var_dump($categories);
+
+                foreach ($categories as $key => $value) {
+
+                  echo '<tr>
+                          <td>'.($key+1).'</td>
+                          <td class="text-uppercase">'.$value['category'].'</td>
+                          <td>
+
+                            <div class="btn-group">
+                                
+                              <button class="btn btn-warning btnEditCategory" idCategory="'.$value["id"].'" data-toggle="modal" data-target="#editCategories"><i class="fa fa-pencil"></i></button>
+
+                              <button class="btn btn-danger btnDeleteCategory" idCategory="'.$value["id"].'"><i class="fa fa-times"></i></button>
+
+                            </div>  
+
+                          </td>
+
+                        </tr>';
+                }
+
+              ?>
+              
+            </tbody>
+
+          </table>
+
+
+
+        </div>
       
       </div>
-   
-      <div class="box-footer">
-        
-        Footer
-      
-      </div>
+      <!-- /.box -->
 
+    </section>
+    <!-- /.content -->
+  </div>
+
+
+<!--=====================================
+=            module add Categories            =
+======================================-->
+
+<!-- Modal -->
+<div id="addCategories" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <form role="form" method="POST">
+        <div class="modal-header" style="background: #ff7b2d; color: #fff">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Categories</h4>
+        </div>
+        <div class="modal-body">
+          <div class="box-body">
+
+            <!--Input name -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                <input class="form-control input-lg" type="text" name="newCategory" placeholder="Add Category" required>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-warning">Save Category</button>
+        </div>
+      </form>
     </div>
 
-  </section>
-
+  </div>
 </div>
+
+<?php
+  
+  $createCategory = new ControllerCategories();
+  $createCategory -> ctrCreateCategory();
+?>
+
+
+<!--=====================================
+=            module edit Categories            =
+======================================-->
+
+<!-- Modal -->
+<div id="editCategories" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <form role="form" method="POST">
+        <div class="modal-header" style="background: #ff7b2d; color: #fff">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Categories</h4>
+        </div>
+        <div class="modal-body">
+          <div class="box-body">
+
+            <!--Input name -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                <input class="form-control input-lg" type="text" id="editCategory" name="editCategory" required>
+                <input type="hidden" name="idCategory" id="idCategory" required>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-warning">Save changes</button>
+        </div>
+
+        <?php
+  
+          $editCategory = new ControllerCategories();
+          $editCategory -> ctrEditCategory();
+        ?>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<?php
+  
+  $deleteCategory = new ControllerCategories();
+  $deleteCategory -> ctrDeleteCategory();
+?>

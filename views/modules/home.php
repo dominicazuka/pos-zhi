@@ -22,39 +22,83 @@
 
   <section class="content">
 
-    <div class="box">
+    <div class="row">
+      
+      <?php
 
-      <div class="box-header with-border">
+        if($_SESSION["profile"] =="Administrator"){
 
-        <h3 class="box-title">Title</h3>
+          include "home/top-boxes.php";
 
-        <div class="box-tools pull-right">
+        }
 
-          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+      ?>
+    
+    </div>
+    
+    <div class="row">
 
-            <i class="fa fa-minus"></i>
+      <div class="col-lg-12">
 
-          </button>
+      <?php
 
-          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-            
-            <i class="fa fa-times"></i>
+        if($_SESSION["profile"] =="Administrator"){
 
-          </button>
+          include "reports/sales-graph.php";
 
-        </div>
+        }
+
+      ?>
+      
+      </div>
+
+      <div class="col-lg-6">
+        
+        <?php
+
+          if($_SESSION["profile"] =="Administrator"){
+
+            include "reports/bestseller-products.php";
+
+          }
+
+        ?>
 
       </div>
 
-      <div class="box-body">
+       <div class="col-lg-6">
+        
+        <?php
 
-        Start creating your amazing application!
+          if($_SESSION["profile"] =="Administrator"){
+
+            include "home/recent-products.php";
+
+          }
+
+        ?>
 
       </div>
 
-      <div class="box-footer">
+      <div class="col-lg-12">
+           
+        <?php
 
-        Footer
+        if($_SESSION["profile"] =="Account-Officer" || $_SESSION["profile"] =="Bar-Manager"){
+
+           echo '<div class="box box-success">
+
+           <div class="box-header">
+
+           <h1>Welcome ' .$_SESSION["name"].'</h1>
+
+           </div>
+
+           </div>';
+
+        }
+
+        ?>
 
       </div>
 
