@@ -140,11 +140,11 @@ if($_SESSION["profile"] == "Account-Officer"){
 
                       </button>';
 
-                       //if($_SESSION["profile"] == "Administrator"){
+                       if($_SESSION["profile"] == "Administrator"){
                          echo '<button class="btn btn-warning btnEditSale" idSale="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
 
                           <button class="btn btn-danger btnDeleteSale" idSale="'.$value["id"].'"><i class="fa fa-times"></i></button>';
-                       //}
+                       }
 
                    echo '</div>  
 

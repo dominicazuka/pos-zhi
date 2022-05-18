@@ -1,3 +1,19 @@
+<?php
+
+if($_SESSION["profile"] == "Account-Officer"){
+
+  echo '<script>
+
+    window.location = "home";
+
+  </script>';
+
+  return;
+
+}
+
+?>
+
 <div class="content-wrapper">
 
   <section class="content-header">
@@ -47,7 +63,7 @@
              <th>Birthday</th>
              <th>Total purchases</th>
              <th>Last Purchase</th>
-             <th>Last login</th>
+             <th>Register Date</th>
              <th>Actions</th>
 
            </tr> 
@@ -84,7 +100,7 @@
 
                       <td>'.$value["purchases"].'</td>
 
-                      <td>0000-00-00 00:00:00</td>
+                      <td>'.$value["lastPurchase"].'</td>
 
                       <td>'.$value["registerDate"].'</td>
 

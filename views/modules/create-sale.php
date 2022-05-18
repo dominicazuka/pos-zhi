@@ -1,3 +1,19 @@
+<?php
+
+if($_SESSION["profile"] == "Account-Officer"){
+
+  echo '<script>
+
+    window.location = "home";
+
+  </script>';
+
+  return;
+
+}
+
+?>
+
 <div class="content-wrapper">
 
   <section class="content-header">

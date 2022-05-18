@@ -1,3 +1,18 @@
+<?php
+
+if($_SESSION["profile"] == "Bar-Manager"){
+
+  echo '<script>
+
+    window.location = "home";
+
+  </script>';
+
+  return;
+
+}
+
+?>
 
 <div class="content-wrapper">
 
